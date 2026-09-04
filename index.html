@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width,
+        initial-scale=1.0,
+        maximum-scale=1.0,
+        user-scalable=no,
+        viewport-fit=cover"
+    >
+
+    <meta
+        name="apple-mobile-web-app-capable"
+        content="yes"
+    >
+
+    <meta
+        name="apple-mobile-web-app-status-bar-style"
+        content="black-translucent"
+    >
+
+    <title>FitAI Body Engine</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+
+<body>
+
+    <main id="app">
+
+        <video
+            id="camera"
+            autoplay
+            playsinline
+            muted
+        ></video>
+
+        <canvas
+            id="overlay"
+        ></canvas>
+
+
+        <!-- Moldura estética -->
+
+        <div class="corner top-left"></div>
+        <div class="corner top-right"></div>
+        <div class="corner bottom-left"></div>
+        <div class="corner bottom-right"></div>
+
+
+        <!-- Indicador superior -->
+
+        <div id="status-dot"></div>
+
+
+        <!-- Controles -->
+
+        <div id="controls">
+
+            <button
+                id="start-button"
+                class="main-button"
+            >
+                INICIAR
+            </button>
+
+            <button
+                id="switch-button"
+                class="icon-button hidden"
+                aria-label="Trocar câmera"
+            >
+                ↻
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <script
+        type="module"
+        src="app.js"
+    ></script>
+
+</body>
+
+</html>

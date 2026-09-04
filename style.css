@@ -1,0 +1,263 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    background: #000;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+}
+
+
+body {
+    overscroll-behavior: none;
+
+    touch-action: manipulation;
+}
+
+
+#app {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #151515 0%,
+            #050505 75%
+        );
+}
+
+
+/* =======================================================
+   CÂMERA
+======================================================= */
+
+#camera {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    top: 0;
+    left: 0;
+
+    background: #000;
+}
+
+
+/* =======================================================
+   CANVAS DO ESQUELETO
+======================================================= */
+
+#overlay {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    top: 0;
+    left: 0;
+
+    pointer-events: none;
+}
+
+
+/* =======================================================
+   HUD / MOLDURA
+======================================================= */
+
+.corner {
+    position: absolute;
+
+    width: 36px;
+    height: 36px;
+
+    pointer-events: none;
+
+    opacity: 0.65;
+}
+
+
+.top-left {
+    top: max(24px, env(safe-area-inset-top));
+    left: 18px;
+
+    border-top: 2px solid rgba(90, 255, 150, 0.75);
+    border-left: 2px solid rgba(90, 255, 150, 0.75);
+}
+
+
+.top-right {
+    top: max(24px, env(safe-area-inset-top));
+    right: 18px;
+
+    border-top: 2px solid rgba(90, 255, 150, 0.75);
+    border-right: 2px solid rgba(90, 255, 150, 0.75);
+}
+
+
+.bottom-left {
+    bottom: max(24px, env(safe-area-inset-bottom));
+    left: 18px;
+
+    border-bottom: 2px solid rgba(90, 255, 150, 0.75);
+    border-left: 2px solid rgba(90, 255, 150, 0.75);
+}
+
+
+.bottom-right {
+    bottom: max(24px, env(safe-area-inset-bottom));
+    right: 18px;
+
+    border-bottom: 2px solid rgba(90, 255, 150, 0.75);
+    border-right: 2px solid rgba(90, 255, 150, 0.75);
+}
+
+
+/* =======================================================
+   STATUS
+======================================================= */
+
+#status-dot {
+    position: absolute;
+
+    top: max(30px, env(safe-area-inset-top));
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #777;
+
+    box-shadow:
+        0 0 8px rgba(150, 150, 150, 0.8);
+}
+
+
+#status-dot.active {
+    background: rgb(65, 255, 125);
+
+    box-shadow:
+        0 0 8px rgba(65, 255, 125, 1),
+        0 0 18px rgba(65, 255, 125, 0.8);
+}
+
+
+#status-dot.warning {
+    background: rgb(255, 194, 30);
+
+    box-shadow:
+        0 0 8px rgba(255, 194, 30, 1),
+        0 0 18px rgba(255, 194, 30, 0.8);
+}
+
+
+/* =======================================================
+   CONTROLES
+======================================================= */
+
+#controls {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    bottom:
+        calc(
+            max(30px, env(safe-area-inset-bottom))
+            + 16px
+        );
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 18px;
+
+    z-index: 10;
+}
+
+
+.main-button {
+    appearance: none;
+
+    border: 1px solid rgba(80, 255, 140, 0.7);
+
+    background: rgba(10, 20, 13, 0.76);
+
+    color: rgb(110, 255, 160);
+
+    padding: 14px 28px;
+
+    border-radius: 999px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    backdrop-filter: blur(12px);
+
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 0 20px rgba(55, 255, 120, 0.15);
+
+    cursor: pointer;
+}
+
+
+.main-button:active {
+    transform: scale(0.96);
+}
+
+
+.icon-button {
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    color: white;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    font-size: 24px;
+
+    backdrop-filter: blur(10px);
+
+    -webkit-backdrop-filter: blur(10px);
+}
+
+
+.hidden {
+    display: none;
+}
