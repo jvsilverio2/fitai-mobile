@@ -32,6 +32,10 @@ import {
 }
 from "./js/squat-engine.js";
 
+import {
+    fitaiBody
+}
+from "./js/body-model.js";
 
 // ==========================================================
 // FITAI
@@ -10111,6 +10115,18 @@ function processFrame() {
 
             const landmarks =
                 result.landmarks[0];
+
+                const worldLandmarks =
+    result.worldLandmarks?.[0]
+    ??
+    null;
+
+
+fitaiBody.update(
+    landmarks,
+    worldLandmarks,
+    timestamp
+);
 
 
             updateRecorderDetection(

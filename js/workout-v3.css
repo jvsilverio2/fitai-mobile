@@ -1,0 +1,685 @@
+/* ==========================================================
+   FITAI — WORKOUT V4
+   CLEAN TRAINING INTERFACE
+   ========================================================== */
+
+
+/* ==========================================================
+   RESET DA TELA DE TREINO
+   ========================================================== */
+
+#screen-workout {
+    position: fixed !important;
+
+    z-index: 500 !important;
+
+    inset: 0 !important;
+
+    width: 100vw !important;
+    height: 100dvh !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: hidden !important;
+
+    background: #000 !important;
+}
+
+
+/* ==========================================================
+   CÂMERA
+   ========================================================== */
+
+#screen-workout #camera {
+    position: absolute !important;
+
+    z-index: 1 !important;
+
+    inset: 0 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    margin: 0 !important;
+
+    object-fit: cover !important;
+
+    border: none !important;
+    border-radius: 0 !important;
+
+    background: #000 !important;
+}
+
+
+/* ==========================================================
+   BODY ENGINE
+   ========================================================== */
+
+#screen-workout #overlay {
+    position: absolute !important;
+
+    z-index: 5 !important;
+
+    inset: 0 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    pointer-events: none !important;
+}
+
+
+/* referência antiga desligada */
+
+#screen-workout #target-overlay {
+    display: none !important;
+
+    visibility: hidden !important;
+
+    opacity: 0 !important;
+
+    pointer-events: none !important;
+}
+
+
+/* ==========================================================
+   DESLIGA TODO O HUD ANTIGO CRIADO PELO APP.JS
+   ========================================================== */
+
+#screen-workout #live-hud,
+#screen-workout #live-hud-layer,
+
+#screen-workout #live-hud-counter,
+#screen-workout #live-hud-message,
+#screen-workout #live-hud-time,
+
+#screen-workout #squat-biomech,
+#screen-workout #squat-phase,
+
+#screen-workout .live-hud,
+#screen-workout .live-hud-layer,
+#screen-workout .live-hud-box,
+
+#screen-workout .squat-biomech,
+#screen-workout .squat-phase {
+    display: none !important;
+
+    visibility: hidden !important;
+
+    opacity: 0 !important;
+
+    pointer-events: none !important;
+}
+
+
+/* ==========================================================
+   CABEÇALHO
+   ========================================================== */
+
+#screen-workout .workout-header {
+    position: absolute !important;
+
+    z-index: 30 !important;
+
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+
+    min-height: 110px !important;
+
+    padding:
+        calc(
+            14px
+            +
+            env(safe-area-inset-top)
+        )
+        16px
+        42px !important;
+
+    display: grid !important;
+
+    grid-template-columns:
+        48px
+        1fr
+        48px !important;
+
+    align-items: start !important;
+
+    background:
+        linear-gradient(
+            to bottom,
+
+            rgba(0,0,0,.54)
+            0%,
+
+            rgba(0,0,0,.18)
+            52%,
+
+            transparent
+            100%
+        ) !important;
+
+    pointer-events: none !important;
+}
+
+
+/* ==========================================================
+   BOTÕES SUPERIORES
+   ========================================================== */
+
+#screen-workout .workout-header button {
+    width: 44px !important;
+    height: 44px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    display: grid !important;
+
+    place-items: center !important;
+
+    border:
+        1px solid
+        rgba(255,255,255,.18) !important;
+
+    border-radius: 50% !important;
+
+    background:
+        rgba(25,25,27,.38) !important;
+
+    color: #fff !important;
+
+    font-size: 20px !important;
+
+    box-shadow:
+        0
+        8px
+        30px
+        rgba(0,0,0,.18) !important;
+
+    backdrop-filter:
+        blur(24px)
+        saturate(140%) !important;
+
+    -webkit-backdrop-filter:
+        blur(24px)
+        saturate(140%) !important;
+
+    pointer-events: auto !important;
+}
+
+
+/* ==========================================================
+   TÍTULO
+   ========================================================== */
+
+#screen-workout .workout-header > div {
+    padding:
+        3px
+        10px
+        0 !important;
+
+    text-align: center !important;
+}
+
+
+#screen-workout #workout-title {
+    display: block !important;
+
+    color: #fff !important;
+
+    font-size: 18px !important;
+    font-weight: 700 !important;
+
+    line-height: 1.08 !important;
+
+    letter-spacing: -.035em !important;
+
+    text-transform: none !important;
+}
+
+
+#screen-workout #workout-series {
+    display: block !important;
+
+    margin-top: 6px !important;
+
+    color:
+        rgba(255,255,255,.60) !important;
+
+    font-size: 12px !important;
+    font-weight: 500 !important;
+
+    line-height: 1 !important;
+
+    letter-spacing: 0 !important;
+
+    text-transform: none !important;
+}
+
+
+/* ==========================================================
+   CONTADOR PRINCIPAL
+   ========================================================== */
+
+#screen-workout .workout-counter-area {
+    position: absolute !important;
+
+    z-index: 24 !important;
+
+    left: 50% !important;
+
+    bottom:
+        calc(
+            164px
+            +
+            env(safe-area-inset-bottom)
+        ) !important;
+
+    transform:
+        translateX(-50%) !important;
+
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    width: auto !important;
+    min-width: 0 !important;
+
+    height: auto !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border: none !important;
+
+    border-radius: 0 !important;
+
+    background: transparent !important;
+
+    box-shadow: none !important;
+
+    backdrop-filter: none !important;
+
+    -webkit-backdrop-filter: none !important;
+
+    pointer-events: none !important;
+}
+
+
+#screen-workout #workout-counter {
+    display: block !important;
+
+    margin: 0 !important;
+
+    padding: 0 !important;
+
+    color: #fff !important;
+
+    font-size:
+        clamp(
+            72px,
+            21vw,
+            110px
+        ) !important;
+
+    font-weight: 700 !important;
+
+    line-height: .86 !important;
+
+    letter-spacing: -.065em !important;
+
+    text-align: center !important;
+
+    text-shadow:
+        0
+        4px
+        28px
+        rgba(0,0,0,.55) !important;
+}
+
+
+#screen-workout #workout-counter-label {
+    display: block !important;
+
+    margin-top: 14px !important;
+
+    color:
+        rgba(255,255,255,.62) !important;
+
+    font-size: 11px !important;
+    font-weight: 600 !important;
+
+    line-height: 1 !important;
+
+    letter-spacing: .14em !important;
+
+    text-transform: uppercase !important;
+
+    text-shadow:
+        0
+        2px
+        12px
+        rgba(0,0,0,.4) !important;
+}
+
+
+/* ==========================================================
+   FEEDBACK
+   ========================================================== */
+
+#screen-workout #movement-message {
+    position: absolute !important;
+
+    z-index: 25 !important;
+
+    left: 50% !important;
+
+    bottom:
+        calc(
+            91px
+            +
+            env(safe-area-inset-bottom)
+        ) !important;
+
+    transform:
+        translateX(-50%) !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    width:
+        calc(
+            100% - 56px
+        ) !important;
+
+    max-width: 420px !important;
+
+    min-height: 54px !important;
+
+    margin: 0 !important;
+
+    padding:
+        11px
+        24px !important;
+
+    border:
+        1px solid
+        rgba(255,255,255,.15) !important;
+
+    border-radius: 999px !important;
+
+    background:
+        rgba(20,20,22,.48) !important;
+
+    color: #fff !important;
+
+    font-size:
+        clamp(
+            18px,
+            5vw,
+            24px
+        ) !important;
+
+    font-weight: 650 !important;
+
+    line-height: 1.1 !important;
+
+    letter-spacing: -.025em !important;
+
+    text-align: center !important;
+
+    box-shadow:
+        0
+        14px
+        36px
+        rgba(0,0,0,.20) !important;
+
+    backdrop-filter:
+        blur(24px)
+        saturate(140%) !important;
+
+    -webkit-backdrop-filter:
+        blur(24px)
+        saturate(140%) !important;
+
+    pointer-events: none !important;
+}
+
+
+/* ==========================================================
+   CORES DE FEEDBACK
+   ========================================================== */
+
+#screen-workout #movement-message.fitai-good {
+    color: #70e58b !important;
+}
+
+
+#screen-workout #movement-message.fitai-warning {
+    color: #ffd83d !important;
+}
+
+
+#screen-workout #movement-message.fitai-error {
+    color: #ff6961 !important;
+}
+
+
+/* ==========================================================
+   RODAPÉ
+   ========================================================== */
+
+#screen-workout .workout-footer {
+    position: absolute !important;
+
+    z-index: 27 !important;
+
+    left: 0 !important;
+    right: 0 !important;
+
+    bottom: 0 !important;
+
+    min-height: 76px !important;
+
+    margin: 0 !important;
+
+    padding:
+        34px
+        16px
+        calc(
+            13px
+            +
+            env(safe-area-inset-bottom)
+        ) !important;
+
+    display: flex !important;
+
+    align-items: flex-end !important;
+
+    justify-content: flex-end !important;
+
+    gap: 10px !important;
+
+    background:
+        linear-gradient(
+            to top,
+
+            rgba(0,0,0,.54)
+            0%,
+
+            rgba(0,0,0,.10)
+            62%,
+
+            transparent
+            100%
+        ) !important;
+
+    pointer-events: none !important;
+}
+
+
+/* ==========================================================
+   AÇÕES
+   ========================================================== */
+
+#screen-workout .workout-footer button {
+    width: auto !important;
+
+    min-width: 92px !important;
+
+    min-height: 46px !important;
+
+    margin: 0 !important;
+
+    padding:
+        0
+        18px !important;
+
+    border:
+        1px solid
+        rgba(255,255,255,.17) !important;
+
+    border-radius: 999px !important;
+
+    background:
+        rgba(25,25,27,.43) !important;
+
+    color:
+        rgba(255,255,255,.94) !important;
+
+    font-size: 13px !important;
+    font-weight: 600 !important;
+
+    line-height: 1 !important;
+
+    letter-spacing: -.01em !important;
+
+    text-transform: none !important;
+
+    box-shadow:
+        0
+        10px
+        28px
+        rgba(0,0,0,.16) !important;
+
+    backdrop-filter:
+        blur(20px)
+        saturate(140%) !important;
+
+    -webkit-backdrop-filter:
+        blur(20px)
+        saturate(140%) !important;
+
+    pointer-events: auto !important;
+}
+
+
+/* ==========================================================
+   CONTROLES ANTIGOS FORA DA TELA
+   ========================================================== */
+
+#screen-workout #manual-rep,
+#screen-workout #complete-series,
+#screen-workout #skip-exercise {
+    display: none !important;
+}
+
+
+/* único controle secundário visível */
+
+#screen-workout #skip-series {
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    margin-left: auto !important;
+}
+
+
+/* ==========================================================
+   SEM CÂMERA
+   ========================================================== */
+
+#screen-workout #no-camera-mode {
+    position: absolute !important;
+
+    z-index: 20 !important;
+
+    inset: 0 !important;
+
+    background: #080808 !important;
+
+    color: #fff !important;
+}
+
+
+/* ==========================================================
+   DESKTOP
+   ========================================================== */
+
+@media (
+    min-width: 700px
+) {
+
+    #screen-workout .workout-counter-area {
+        bottom: 170px !important;
+    }
+
+
+    #screen-workout #workout-counter {
+        font-size: 96px !important;
+    }
+
+
+    #screen-workout #movement-message {
+        bottom: 104px !important;
+
+        max-width: 460px !important;
+    }
+
+
+    #screen-workout .workout-footer {
+        padding-left: 28px !important;
+        padding-right: 28px !important;
+    }
+
+}
+
+
+/* ==========================================================
+   TELAS BAIXAS
+   ========================================================== */
+
+@media (
+    max-height: 700px
+) {
+
+    #screen-workout .workout-counter-area {
+        bottom: 145px !important;
+    }
+
+
+    #screen-workout #workout-counter {
+        font-size: 70px !important;
+    }
+
+
+    #screen-workout #movement-message {
+        bottom: 82px !important;
+
+        min-height: 48px !important;
+
+        font-size: 17px !important;
+    }
+
+}
