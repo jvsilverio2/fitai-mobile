@@ -2,15 +2,23 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
         name="viewport"
-        content="width=device-width,
-        initial-scale=1.0,
-        maximum-scale=1.0,
-        user-scalable=no,
-        viewport-fit=cover"
+        content="
+            width=device-width,
+            initial-scale=1.0,
+            maximum-scale=1.0,
+            user-scalable=no,
+            viewport-fit=cover
+        "
+    >
+
+    <meta
+        name="theme-color"
+        content="#090909"
     >
 
     <meta
@@ -23,73 +31,2643 @@
         content="black-translucent"
     >
 
-    <title>FitAI Body Engine</title>
+    <title>FitAI</title>
 
     <link
         rel="stylesheet"
         href="style.css"
     >
-</head>
 
+</head>
 
 <body>
 
-    <main id="app">
+<div id="app">
 
-        <video
-            id="camera"
-            autoplay
-            playsinline
-            muted
-        ></video>
+    <!-- ENTRADA -->
 
-        <canvas
-            id="overlay"
-        ></canvas>
+    <section
+        id="entry-screen"
+        class="entry-screen"
+    >
 
+        <div class="entry-logo">
 
-        <!-- Moldura estética -->
+            <div class="entry-brand-icon">
+                F
+            </div>
 
-        <div class="corner top-left"></div>
-        <div class="corner top-right"></div>
-        <div class="corner bottom-left"></div>
-        <div class="corner bottom-right"></div>
+            <div class="entry-brand-name">
+                Fit<span>AI</span>
+            </div>
 
+        </div>
 
-        <!-- Indicador superior -->
+        <div class="entry-content">
 
-        <div id="status-dot"></div>
+            <p class="eyebrow">
+                MOVEMENT INTELLIGENCE
+            </p>
 
+            <h1>
+                Treine melhor.
+            </h1>
 
-        <!-- Controles -->
+            <p>
+                Movimento, treino e inteligência corporal em uma única plataforma.
+            </p>
 
-        <div id="controls">
+        </div>
+
+        <div class="entry-actions">
 
             <button
-                id="start-button"
-                class="main-button"
+                id="continue-guest"
+                class="yellow-button"
+                type="button"
             >
-                INICIAR
+                CONTINUAR SEM CONTA
             </button>
 
             <button
-                id="switch-button"
-                class="icon-button hidden"
-                aria-label="Trocar câmera"
+                id="open-login"
+                class="outline-button"
+                type="button"
             >
-                ↻
+                ENTRAR
+            </button>
+
+            <button
+                id="open-register"
+                class="text-button"
+                type="button"
+            >
+                Criar uma conta
             </button>
 
         </div>
 
-    </main>
+        <small class="entry-note">
+            Você pode usar o FitAI sem cadastro.
+        </small>
+
+    </section>
 
 
-    <script
-        type="module"
-        src="app.js"
-    ></script>
+    <!-- LOGIN -->
+
+    <section
+        id="login-screen"
+        class="entry-screen hidden"
+    >
+
+        <button
+            id="login-back"
+            class="entry-back"
+            type="button"
+        >
+            ←
+        </button>
+
+        <div class="entry-content compact">
+
+            <p class="eyebrow">
+                CONTA FITAI
+            </p>
+
+            <h1>
+                Entrar
+            </h1>
+
+            <p>
+                A autenticação online será adicionada posteriormente.
+            </p>
+
+        </div>
+
+        <div class="entry-form">
+
+            <label>
+
+                <span>
+                    Nome ou usuário
+                </span>
+
+                <input
+                    id="login-name"
+                    type="text"
+                    placeholder="Seu nome"
+                >
+
+            </label>
+
+            <button
+                id="login-button"
+                class="yellow-button"
+                type="button"
+            >
+                ENTRAR
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- CADASTRO -->
+
+    <section
+        id="register-screen"
+        class="entry-screen hidden"
+    >
+
+        <button
+            id="register-back"
+            class="entry-back"
+            type="button"
+        >
+            ←
+        </button>
+
+        <div class="entry-content compact">
+
+            <p class="eyebrow">
+                NOVO PERFIL
+            </p>
+
+            <h1>
+                Criar conta
+            </h1>
+
+            <p>
+                Neste protótipo a conta será salva apenas neste aparelho.
+            </p>
+
+        </div>
+
+        <div class="entry-form">
+
+            <label>
+
+                <span>
+                    Nome
+                </span>
+
+                <input
+                    id="register-name"
+                    type="text"
+                    placeholder="João Silva"
+                >
+
+            </label>
+
+            <label>
+
+                <span>
+                    Nome de usuário
+                </span>
+
+                <input
+                    id="register-username"
+                    type="text"
+                    placeholder="@joao.fit"
+                >
+
+            </label>
+
+            <label class="toggle-row">
+
+                <div>
+
+                    <strong>
+                        Usar nome anônimo
+                    </strong>
+
+                    <small>
+                        Seu nome público será gerado pelo FitAI.
+                    </small>
+
+                </div>
+
+                <input
+                    id="register-anonymous"
+                    type="checkbox"
+                >
+
+            </label>
+
+            <label class="toggle-row">
+
+                <div>
+
+                    <strong>
+                        Perfil público
+                    </strong>
+
+                    <small>
+                        Permite participar da comunidade.
+                    </small>
+
+                </div>
+
+                <input
+                    id="register-public"
+                    type="checkbox"
+                    checked
+                >
+
+            </label>
+
+            <button
+                id="register-button"
+                class="yellow-button"
+                type="button"
+            >
+                CRIAR CONTA
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- APP -->
+
+    <div
+        id="main-app"
+        class="hidden"
+    >
+
+        <header
+            id="app-header"
+            class="app-header"
+        >
+
+            <div class="header-left">
+
+                <button
+                    id="header-back"
+                    class="back-button hidden"
+                    type="button"
+                    aria-label="Voltar"
+                >
+                    <span>
+                        ←
+                    </span>
+                </button>
+
+                <button
+                    id="brand-button"
+                    class="brand"
+                    type="button"
+                >
+
+                    <span class="brand-icon">
+                        F
+                    </span>
+
+                    <span class="brand-name">
+                        Fit<span>AI</span>
+                    </span>
+
+                </button>
+
+            </div>
+
+            <button
+                id="header-profile"
+                class="profile-circle"
+                type="button"
+            >
+                G
+            </button>
+
+        </header>
+
+
+        <!-- HOME -->
+
+        <main
+            id="screen-home"
+            class="screen active"
+        >
+
+            <section class="home-intro">
+
+                <p class="eyebrow">
+                    FITAI TRAINING
+                </p>
+
+                <h1 id="home-greeting">
+                    Bom treino.
+                </h1>
+
+                <p id="home-account-status">
+                    Você está usando o FitAI como convidado.
+                </p>
+
+            </section>
+
+            <section class="hero-workout">
+
+                <div class="hero-top">
+
+                    <span>
+                        PRÓXIMO TREINO
+                    </span>
+
+                    <strong>
+                        HOJE
+                    </strong>
+
+                </div>
+
+                <h2 id="home-routine-title">
+                    Treino livre
+                </h2>
+
+                <p id="home-routine-description">
+                    Escolha qualquer exercício e comece agora.
+                </p>
+
+                <button
+                    id="home-main-action"
+                    class="yellow-button"
+                    type="button"
+                >
+                    ESCOLHER EXERCÍCIO
+                </button>
+
+            </section>
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        Para você
+                    </h2>
+
+                    <p>
+                        Exercícios sugeridos
+                    </p>
+
+                </div>
+
+                <button
+                    data-go="library"
+                    type="button"
+                >
+                    Explorar
+                </button>
+
+            </div>
+
+            <section class="horizontal-cards">
+
+                <button
+                    class="mini-exercise-card"
+                    data-exercise="pulo"
+                    type="button"
+                >
+
+                    <div class="exercise-visual">
+                        ↑
+                    </div>
+
+                    <div class="mini-content">
+
+                        <span class="motion-badge">
+                            FITAI MOTION
+                        </span>
+
+                        <strong>
+                            Pulo
+                        </strong>
+
+                        <small>
+                            Corpo inteiro
+                        </small>
+
+                    </div>
+
+                </button>
+
+                <button
+                    class="mini-exercise-card"
+                    data-exercise="postura"
+                    type="button"
+                >
+
+                    <div class="exercise-visual">
+                        ◇
+                    </div>
+
+                    <div class="mini-content">
+
+                        <span class="official-badge">
+                            FITAI
+                        </span>
+
+                        <strong>
+                            Postura neutra
+                        </strong>
+
+                        <small>
+                            Corpo inteiro
+                        </small>
+
+                    </div>
+
+                </button>
+
+            </section>
+
+        </main>
+
+
+        <!-- EXPLORAR -->
+
+        <main
+            id="screen-library"
+            class="screen"
+        >
+
+            <section class="page-heading">
+
+                <p class="eyebrow">
+                    BIBLIOTECA
+                </p>
+
+                <h1>
+                    Explorar
+                </h1>
+
+                <p>
+                    Comece um exercício agora ou adicione-o a uma rotina.
+                </p>
+
+            </section>
+
+            <div class="search-box">
+
+                <span>
+                    ⌕
+                </span>
+
+                <input
+                    id="exercise-search"
+                    type="search"
+                    placeholder="Buscar exercício..."
+                >
+
+            </div>
+
+            <div class="filter-row">
+
+                <button
+                    class="filter-chip active"
+                    data-filter="foryou"
+                    type="button"
+                >
+                    Para você
+                </button>
+
+                <button
+                    class="filter-chip"
+                    data-filter="popular"
+                    type="button"
+                >
+                    Populares
+                </button>
+
+                <button
+                    class="filter-chip"
+                    data-filter="new"
+                    type="button"
+                >
+                    Novos
+                </button>
+
+                <button
+                    class="filter-chip"
+                    data-filter="favorites"
+                    type="button"
+                >
+                    Favoritos
+                </button>
+
+            </div>
+
+            <section
+                id="explore-list"
+                class="exercise-list"
+            ></section>
+
+        </main>
+
+
+        <!-- TREINAR -->
+
+        <main
+            id="screen-train"
+            class="screen"
+        >
+
+            <section class="page-heading">
+
+                <p class="eyebrow">
+                    TREINAR
+                </p>
+
+                <h1>
+                    Seu treino.
+                </h1>
+
+                <p>
+                    Exercício rápido, programas e movimentos personalizados.
+                </p>
+
+            </section>
+
+            <button
+                class="action-card featured"
+                data-go="library"
+                type="button"
+            >
+
+                <span class="action-icon">
+                    ▶
+                </span>
+
+                <div>
+
+                    <small>
+                        TREINO RÁPIDO
+                    </small>
+
+                    <strong>
+                        Exercício avulso
+                    </strong>
+
+                    <p>
+                        Escolha e comece agora.
+                    </p>
+
+                </div>
+
+                <span class="action-arrow">
+                    ›
+                </span>
+
+            </button>
+
+            <button
+                class="action-card"
+                data-go="routines"
+                type="button"
+            >
+
+                <span class="action-icon">
+                    ▣
+                </span>
+
+                <div>
+
+                    <small>
+                        PROGRAMAS
+                    </small>
+
+                    <strong>
+                        Minhas rotinas
+                    </strong>
+
+                    <p>
+                        Organize grupos e programas completos.
+                    </p>
+
+                </div>
+
+                <span class="action-arrow">
+                    ›
+                </span>
+
+            </button>
+
+            <button
+                class="action-card"
+                data-go="createExercise"
+                type="button"
+            >
+
+                <span class="action-icon">
+                    ●
+                </span>
+
+                <div>
+
+                    <small>
+                        MOTION CREATOR
+                    </small>
+
+                    <strong>
+                        Criar exercício
+                    </strong>
+
+                    <p>
+                        Grave somente o movimento do Body Engine.
+                    </p>
+
+                </div>
+
+                <span class="action-arrow">
+                    ›
+                </span>
+
+            </button>
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        Suas rotinas
+                    </h2>
+
+                    <p>
+                        Programas ativos
+                    </p>
+
+                </div>
+
+                <button
+                    id="train-create-routine"
+                    type="button"
+                >
+                    + Criar
+                </button>
+
+            </div>
+
+            <section
+                id="train-routines-list"
+                class="compact-routines"
+            ></section>
+
+        </main>
+
+
+        <!-- ROTINAS -->
+
+        <main
+            id="screen-routines"
+            class="screen"
+        >
+
+            <section class="page-heading">
+
+                <p class="eyebrow">
+                    PROGRAMAS
+                </p>
+
+                <h1>
+                    Minhas rotinas
+                </h1>
+
+                <p>
+                    Monte programas completos de treinamento.
+                </p>
+
+            </section>
+
+            <button
+                id="create-routine-button"
+                class="yellow-button"
+                type="button"
+            >
+                + CRIAR ROTINA
+            </button>
+
+            <section
+                id="routines-list"
+                class="routines-list"
+            ></section>
+
+            <div
+                id="empty-routines"
+                class="empty-state"
+            >
+
+                <span>
+                    ＋
+                </span>
+
+                <h2>
+                    Nenhuma rotina
+                </h2>
+
+                <p>
+                    Crie seu primeiro programa.
+                </p>
+
+            </div>
+
+        </main>
+
+
+        <!-- CRIAR ROTINA -->
+
+        <main
+            id="screen-create-routine"
+            class="screen"
+        >
+
+            <section class="page-heading">
+
+                <p class="eyebrow">
+                    NOVA ROTINA
+                </p>
+
+                <h1>
+                    Criar programa
+                </h1>
+
+                <p>
+                    Os nomes dos grupos são totalmente livres.
+                </p>
+
+            </section>
+
+            <section class="form-card">
+
+                <label>
+
+                    <span>
+                        Nome da rotina
+                    </span>
+
+                    <input
+                        id="routine-name"
+                        type="text"
+                        placeholder="Ex: Hipertrofia"
+                    >
+
+                </label>
+
+                <label>
+
+                    <span>
+                        Duração
+                    </span>
+
+                    <div class="step-control">
+
+                        <button
+                            id="routine-duration-minus"
+                            type="button"
+                        >
+                            −
+                        </button>
+
+                        <strong id="routine-duration">
+                            8 semanas
+                        </strong>
+
+                        <button
+                            id="routine-duration-plus"
+                            type="button"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+                </label>
+
+            </section>
+
+            <section class="form-card">
+
+                <h2>
+                    Grupos de treino
+                </h2>
+
+                <p class="form-description">
+                    Ex.: Segunda-feira, Peito, Treino A ou Mobilidade.
+                </p>
+
+                <div id="routine-groups-editor"></div>
+
+                <button
+                    id="add-routine-group"
+                    class="outline-button"
+                    type="button"
+                >
+                    + ADICIONAR GRUPO
+                </button>
+
+            </section>
+
+            <button
+                id="save-routine"
+                class="yellow-button"
+                type="button"
+            >
+                SALVAR ROTINA
+            </button>
+
+        </main>
+
+
+        <!-- DETALHE ROTINA -->
+
+        <main
+            id="screen-routine-detail"
+            class="screen"
+        >
+
+            <section class="page-heading">
+
+                <p class="eyebrow">
+                    ROTINA
+                </p>
+
+                <h1 id="routine-detail-title">
+                    Rotina
+                </h1>
+
+                <p id="routine-detail-status">
+                    Semana 1 de 8
+                </p>
+
+            </section>
+
+            <div class="progress-track">
+
+                <div id="routine-progress-bar"></div>
+
+            </div>
+
+            <section
+                id="routine-detail-groups"
+                class="routine-detail-groups"
+            ></section>
+
+            <button
+                id="delete-routine"
+                class="danger-button"
+                type="button"
+            >
+                EXCLUIR ROTINA
+            </button>
+
+        </main>
+
+
+        <!-- CONFIGURAÇÃO DO EXERCÍCIO DENTRO DA ROTINA -->
+
+        <main
+            id="screen-routine-exercise-config"
+            class="screen"
+        >
+
+            <section class="page-heading">
+
+                <p class="eyebrow">
+                    CONFIGURAÇÃO DA ROTINA
+                </p>
+
+                <h1 id="routine-exercise-config-title">
+                    Exercício
+                </h1>
+
+                <p>
+                    Esta configuração ficará salva nesta rotina.
+                </p>
+
+            </section>
+
+            <section class="form-card">
+
+                <h2>
+                    Tipo de meta
+                </h2>
+
+                <div class="segmented-control">
+
+                    <button
+                        id="routine-mode-reps"
+                        class="segment active"
+                        type="button"
+                    >
+                        Repetições
+                    </button>
+
+                    <button
+                        id="routine-mode-time"
+                        class="segment"
+                        type="button"
+                    >
+                        Tempo
+                    </button>
+
+                </div>
+
+                <div
+                    id="routine-reps-setting"
+                    class="setting-row"
+                >
+
+                    <div>
+
+                        <strong>
+                            Repetições
+                        </strong>
+
+                        <small>
+                            por série
+                        </small>
+
+                    </div>
+
+                    <div class="mini-stepper">
+
+                        <button
+                            id="routine-reps-minus"
+                            type="button"
+                        >
+                            −
+                        </button>
+
+                        <span id="routine-reps-value">
+                            12
+                        </span>
+
+                        <button
+                            id="routine-reps-plus"
+                            type="button"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div
+                    id="routine-time-setting"
+                    class="setting-row hidden"
+                >
+
+                    <div>
+
+                        <strong>
+                            Tempo
+                        </strong>
+
+                        <small>
+                            por série
+                        </small>
+
+                    </div>
+
+                    <div class="mini-stepper">
+
+                        <button
+                            id="routine-time-minus"
+                            type="button"
+                        >
+                            −
+                        </button>
+
+                        <span id="routine-time-value">
+                            30s
+                        </span>
+
+                        <button
+                            id="routine-time-plus"
+                            type="button"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="separator"></div>
+
+                <div class="setting-row">
+
+                    <div>
+
+                        <strong>
+                            Séries
+                        </strong>
+
+                        <small>
+                            total
+                        </small>
+
+                    </div>
+
+                    <div class="mini-stepper">
+
+                        <button
+                            id="routine-sets-minus"
+                            type="button"
+                        >
+                            −
+                        </button>
+
+                        <span id="routine-sets-value">
+                            3
+                        </span>
+
+                        <button
+                            id="routine-sets-plus"
+                            type="button"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="separator"></div>
+
+                <div class="setting-row">
+
+                    <div>
+
+                        <strong>
+                            Descanso
+                        </strong>
+
+                        <small>
+                            entre séries
+                        </small>
+
+                    </div>
+
+                    <div class="mini-stepper">
+
+                        <button
+                            id="routine-rest-minus"
+                            type="button"
+                        >
+                            −
+                        </button>
+
+                        <span id="routine-rest-value">
+                            60s
+                        </span>
+
+                        <button
+                            id="routine-rest-plus"
+                            type="button"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="form-card">
+
+                <h2>
+                    Body Engine
+                </h2>
+
+                <label class="toggle-row">
+
+                    <div>
+
+                        <strong>
+                            Fiscalização pela câmera
+                        </strong>
+
+                        <small>
+                            Ativar referência e rastreamento.
+                        </small>
+
+                    </div>
+
+                    <input
+                        id="routine-supervision"
+                        type="checkbox"
+                        checked
+                    >
+
+                </label>
+
+            </section>
+
+            <button
+                id="save-routine-exercise-config"
+                class="yellow-button"
+                type="button"
+            >
+                SALVAR CONFIGURAÇÃO
+            </button>
+
+        </main>
+
+
+        <!-- COMUNIDADE -->
+
+        <main
+            id="screen-community"
+            class="screen"
+        >
+
+            <section class="page-heading">
+
+                <p class="eyebrow">
+                    FITAI COMMUNITY
+                </p>
+
+                <h1>
+                    Comunidade
+                </h1>
+
+                <p>
+                    Descubra movimentos, profissionais e rotinas.
+                </p>
+
+            </section>
+
+            <div class="community-tabs">
+
+                <button class="community-tab active">
+                    Para você
+                </button>
+
+                <button class="community-tab">
+                    Seguindo
+                </button>
+
+            </div>
+
+            <section class="community-feed">
+
+                <article class="social-post">
+
+                    <div class="creator-row">
+
+                        <div class="creator-avatar">
+                            LT
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Lucas Trainer
+                            </strong>
+
+                            <span>
+                                @lucastrainer · 12 min
+                            </span>
+
+                        </div>
+
+                        <small class="trainer-badge">
+                            PERSONAL
+                        </small>
+
+                    </div>
+
+                    <div class="motion-preview large">
+
+                        <span>
+                            ◎
+                        </span>
+
+                        <strong>
+                            Elevação lateral controlada
+                        </strong>
+
+                        <small>
+                            BODY ENGINE MOTION
+                        </small>
+
+                    </div>
+
+                    <button class="outline-button">
+                        TESTAR EXERCÍCIO
+                    </button>
+
+                </article>
+
+            </section>
+
+        </main>
+
+
+        <!-- PERFIL -->
+
+        <main
+            id="screen-profile"
+            class="screen"
+        >
+
+            <section class="profile-hero">
+
+                <div
+                    id="profile-avatar-large"
+                    class="profile-avatar-large"
+                >
+                    G
+                </div>
+
+                <h1 id="profile-name">
+                    Convidado
+                </h1>
+
+                <p id="profile-username">
+                    Dados salvos somente neste aparelho
+                </p>
+
+                <button
+                    id="profile-create-account"
+                    class="yellow-button small"
+                    type="button"
+                >
+                    CRIAR CONTA
+                </button>
+
+            </section>
+
+            <section class="profile-stats">
+
+                <div>
+
+                    <strong id="profile-routines-count">
+                        0
+                    </strong>
+
+                    <span>
+                        Rotinas
+                    </span>
+
+                </div>
+
+                <div>
+
+                    <strong id="profile-favorites-count">
+                        0
+                    </strong>
+
+                    <span>
+                        Favoritos
+                    </span>
+
+                </div>
+
+                <div>
+
+                    <strong>
+                        0
+                    </strong>
+
+                    <span>
+                        Criados
+                    </span>
+
+                </div>
+
+            </section>
+
+            <section class="menu-list">
+
+                <button
+                    data-go="routines"
+                    type="button"
+                >
+
+                    <span>
+                        Minhas rotinas
+                    </span>
+
+                    <strong>
+                        ›
+                    </strong>
+
+                </button>
+
+                <button
+                    id="profile-favorites"
+                    type="button"
+                >
+
+                    <span>
+                        Favoritos
+                    </span>
+
+                    <strong>
+                        ›
+                    </strong>
+
+                </button>
+
+                <button
+                    data-go="createExercise"
+                    type="button"
+                >
+
+                    <span>
+                        Exercícios criados
+                    </span>
+
+                    <strong>
+                        ›
+                    </strong>
+
+                </button>
+
+                <button
+                    data-go="settings"
+                    type="button"
+                >
+
+                    <span>
+                        Configurações
+                    </span>
+
+                    <strong>
+                        ›
+                    </strong>
+
+                </button>
+
+            </section>
+
+        </main>
+
+
+        <!-- SETTINGS -->
+
+        <main
+            id="screen-settings"
+            class="screen"
+        >
+
+            <section class="page-heading">
+
+                <p class="eyebrow">
+                    FITAI
+                </p>
+
+                <h1>
+                    Configurações
+                </h1>
+
+            </section>
+
+            <section class="settings-group">
+
+                <h2>
+                    Treino
+                </h2>
+
+                <label class="toggle-row">
+
+                    <div>
+
+                        <strong>
+                            Som
+                        </strong>
+
+                        <small>
+                            Avisos durante séries.
+                        </small>
+
+                    </div>
+
+                    <input
+                        id="setting-sound"
+                        type="checkbox"
+                        checked
+                    >
+
+                </label>
+
+                <label class="toggle-row">
+
+                    <div>
+
+                        <strong>
+                            Vibração
+                        </strong>
+
+                    </div>
+
+                    <input
+                        id="setting-vibration"
+                        type="checkbox"
+                        checked
+                    >
+
+                </label>
+
+                <label class="toggle-row">
+
+                    <div>
+
+                        <strong>
+                            Contagem regressiva
+                        </strong>
+
+                    </div>
+
+                    <input
+                        id="setting-countdown"
+                        type="checkbox"
+                        checked
+                    >
+
+                </label>
+
+            </section>
+
+            <section class="settings-group">
+
+                <h2>
+                    Body Engine
+                </h2>
+
+                <label class="toggle-row">
+
+                    <div>
+
+                        <strong>
+                            Mostrar esqueleto
+                        </strong>
+
+                    </div>
+
+                    <input
+                        id="setting-skeleton"
+                        type="checkbox"
+                        checked
+                    >
+
+                </label>
+
+                <label class="toggle-row">
+
+                    <div>
+
+                        <strong>
+                            Mostrar referência
+                        </strong>
+
+                    </div>
+
+                    <input
+                        id="setting-reference"
+                        type="checkbox"
+                        checked
+                    >
+
+                </label>
+
+                <label class="toggle-row">
+
+                    <div>
+
+                        <strong>
+                            Espelhar câmera frontal
+                        </strong>
+
+                    </div>
+
+                    <input
+                        id="setting-mirror"
+                        type="checkbox"
+                        checked
+                    >
+
+                </label>
+
+            </section>
+
+            <section class="settings-group">
+
+                <h2>
+                    HUD
+                </h2>
+
+                <button
+                    id="open-hud-editor"
+                    class="outline-button"
+                    type="button"
+                >
+                    EDITAR HUD
+                </button>
+
+            </section>
+
+            <section class="settings-group">
+
+                <h2>
+                    Privacidade
+                </h2>
+
+                <label class="toggle-row">
+
+                    <div>
+
+                        <strong>
+                            Histórico local
+                        </strong>
+
+                    </div>
+
+                    <input
+                        id="setting-history"
+                        type="checkbox"
+                        checked
+                    >
+
+                </label>
+
+                <label class="toggle-row">
+
+                    <div>
+
+                        <strong>
+                            Comunidade
+                        </strong>
+
+                    </div>
+
+                    <input
+                        id="setting-community"
+                        type="checkbox"
+                    >
+
+                </label>
+
+            </section>
+
+        </main>
+
+
+        <!-- HUD EDITOR -->
+
+        <main
+            id="screen-hud-editor"
+            class="screen"
+        >
+
+            <section class="page-heading">
+
+                <p class="eyebrow">
+                    INTERFACE DO TREINO
+                </p>
+
+                <h1>
+                    Editar HUD
+                </h1>
+
+                <p>
+                    Arraste os elementos para a posição desejada.
+                </p>
+
+            </section>
+
+            <div class="hud-preview">
+
+                <div class="hud-preview-camera">
+
+                    <span class="hud-box hud-reps">
+                        REP 08
+                    </span>
+
+                    <span class="hud-box hud-series">
+                        SÉRIE 2/4
+                    </span>
+
+                    <span class="hud-box hud-message">
+                        POSTURA
+                    </span>
+
+                    <span class="hud-box hud-time">
+                        00:32
+                    </span>
+
+                </div>
+
+            </div>
+
+            <section class="settings-group">
+
+                <label class="toggle-row">
+
+                    <strong>
+                        Repetições
+                    </strong>
+
+                    <input
+                        id="hud-show-counter"
+                        type="checkbox"
+                        checked
+                    >
+
+                </label>
+
+                <label class="toggle-row">
+
+                    <strong>
+                        Série atual
+                    </strong>
+
+                    <input
+                        id="hud-show-series"
+                        type="checkbox"
+                        checked
+                    >
+
+                </label>
+
+                <label class="toggle-row">
+
+                    <strong>
+                        Mensagem
+                    </strong>
+
+                    <input
+                        id="hud-show-message"
+                        type="checkbox"
+                        checked
+                    >
+
+                </label>
+
+                <label class="toggle-row">
+
+                    <strong>
+                        Cronômetro
+                    </strong>
+
+                    <input
+                        id="hud-show-time"
+                        type="checkbox"
+                        checked
+                    >
+
+                </label>
+
+            </section>
+
+        </main>
+
+
+        <!-- CRIAR EXERCÍCIO -->
+
+        <main
+            id="screen-create-exercise"
+            class="screen"
+        >
+
+            <section class="page-heading">
+
+                <p class="eyebrow">
+                    MOTION CREATOR
+                </p>
+
+                <h1>
+                    Criar exercício
+                </h1>
+
+                <p>
+                    Grave um padrão corporal reutilizável.
+                </p>
+
+            </section>
+
+            <section class="privacy-motion-card">
+
+                <div class="motion-lock-icon">
+                    ◎
+                </div>
+
+                <h2>
+                    BODY ENGINE ONLY
+                </h2>
+
+                <p>
+                    O FitAI registra o movimento corporal detectado. O vídeo e o áudio não são armazenados.
+                </p>
+
+                <div class="motion-rules">
+
+                    <span>
+                        ✓ posições articulares
+                    </span>
+
+                    <span>
+                        ✓ sequência
+                    </span>
+
+                    <span>
+                        ✓ tempo
+                    </span>
+
+                    <span class="negative">
+                        ✕ vídeo
+                    </span>
+
+                    <span class="negative">
+                        ✕ áudio
+                    </span>
+
+                </div>
+
+            </section>
+
+            <section class="form-card">
+
+                <label>
+
+                    <span>
+                        Nome do exercício
+                    </span>
+
+                    <input
+                        id="creator-exercise-name"
+                        type="text"
+                        placeholder="Ex: Elevação lateral"
+                    >
+
+                </label>
+
+                <label>
+
+                    <span>
+                        Categoria
+                    </span>
+
+                    <select id="creator-category">
+
+                        <option>
+                            Corpo inteiro
+                        </option>
+
+                        <option>
+                            Peito
+                        </option>
+
+                        <option>
+                            Costas
+                        </option>
+
+                        <option>
+                            Pernas
+                        </option>
+
+                        <option>
+                            Ombros
+                        </option>
+
+                        <option>
+                            Braços
+                        </option>
+
+                        <option>
+                            Mobilidade
+                        </option>
+
+                    </select>
+
+                </label>
+
+                <label>
+                    <span>Descrição</span>
+                    <textarea
+                        id="creator-description"
+                        rows="4"
+                        placeholder="Explique para que serve e o que o usuário deve saber sobre este exercício."
+                    ></textarea>
+                </label>
+
+                <label>
+                    <span>Como executar</span>
+                    <textarea
+                        id="creator-execution"
+                        rows="4"
+                        placeholder="Descreva a execução passo a passo."
+                    ></textarea>
+                </label>
+
+                <label>
+                    <span>O FitAI deve observar</span>
+                    <input
+                        id="creator-observes"
+                        type="text"
+                        placeholder="Ex: Joelho · Quadril · Tronco"
+                    >
+                </label>
+
+                <label>
+                    <span>Enquadramento recomendado</span>
+                    <textarea
+                        id="creator-framing"
+                        rows="3"
+                        placeholder="Ex: corpo inteiro visível, câmera lateral..."
+                    ></textarea>
+                </label>
+
+                <label class="toggle-row creator-guide-toggle">
+                    <strong>
+                        Criar Guia Lento usando este movimento
+                    </strong>
+                    <input
+                        id="creator-slow-guide"
+                        type="checkbox"
+                        checked
+                    >
+                </label>
+
+            </section>
+
+            <button
+                id="prepare-recording"
+                class="yellow-button"
+                type="button"
+            >
+                ● GRAVAR MOVIMENTO
+            </button>
+
+        </main>
+
+
+        <!-- RECORD PREP -->
+
+        <main
+            id="screen-record-prep"
+            class="screen"
+        >
+
+            <section class="record-prep">
+
+                <span class="record-symbol">
+                    ●
+                </span>
+
+                <p class="eyebrow">
+                    MOTION RECORDER
+                </p>
+
+                <h1>
+                    Preparar gravação
+                </h1>
+
+                <p>
+                    Posicione o corpo inteiro ou a região necessária no enquadramento.
+                </p>
+
+                <div class="record-information">
+
+                    <strong>
+                        BODY ENGINE ONLY
+                    </strong>
+
+                    <span>
+                        O vídeo não será armazenado.
+                    </span>
+
+                    <span>
+                        O áudio não será armazenado.
+                    </span>
+
+                    <span>
+                        Somente os landmarks serão gravados.
+                    </span>
+
+                </div>
+
+                <button
+                    id="record-demo-button"
+                    class="yellow-button"
+                    type="button"
+                >
+                    ABRIR MOTION RECORDER
+                </button>
+
+            </section>
+
+        </main>
+
+
+        <!-- DETALHE EXERCÍCIO -->
+
+        <main
+            id="screen-exercise"
+            class="screen"
+        >
+
+            <section class="exercise-detail-visual">
+
+                <div
+                    id="detail-animation-preview"
+                    class="detail-animation-preview"
+                >
+
+                    <div class="preview-stick">
+
+                        <span class="preview-head"></span>
+                        <span class="preview-body"></span>
+                        <span class="preview-arm-left"></span>
+                        <span class="preview-arm-right"></span>
+                        <span class="preview-leg-left"></span>
+                        <span class="preview-leg-right"></span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="exercise-detail-content">
+
+                <div class="exercise-detail-top">
+
+                    <span
+                        id="detail-badge"
+                        class="official-badge"
+                    >
+                        FITAI
+                    </span>
+
+                    <button
+                        id="favorite-button"
+                        class="favorite-button"
+                        type="button"
+                    >
+                        ♡
+                    </button>
+
+                </div>
+
+                <h1 id="detail-title">
+                    Exercício
+                </h1>
+
+                <p id="detail-muscles">
+                    Corpo inteiro
+                </p>
+
+                <div class="exercise-numbers">
+
+                    <div>
+
+                        <strong id="detail-popularity">
+                            32 mil
+                        </strong>
+
+                        <span>
+                            execuções
+                        </span>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            4,8
+                        </strong>
+
+                        <span>
+                            avaliação
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="analysis-card">
+
+                    <small>
+                        BODY ENGINE
+                    </small>
+
+                    <p>
+                        A câmera acompanha as articulações necessárias.
+                    </p>
+
+                </div>
+
+                <section class="exercise-profile-grid">
+
+                    <article class="exercise-profile-card exercise-profile-card--wide">
+                        <small>DESCRIÇÃO</small>
+                        <p id="detail-description"></p>
+                    </article>
+
+                    <article class="exercise-profile-card">
+                        <small>COMO EXECUTAR</small>
+                        <p id="detail-execution"></p>
+                    </article>
+
+                    <article class="exercise-profile-card">
+                        <small>O FITAI OBSERVA</small>
+                        <p id="detail-observes"></p>
+                    </article>
+
+                    <article class="exercise-profile-card exercise-profile-card--wide">
+                        <small>ENQUADRAMENTO</small>
+                        <p id="detail-framing"></p>
+                    </article>
+
+                </section>
+
+                <button
+                    id="detail-slow-guide"
+                    class="outline-button slow-guide-button"
+                    type="button"
+                >
+                    GUIA LENTO · NÃO CONFIGURADO
+                </button>
+
+                <button
+                    id="start-now-button"
+                    class="yellow-button"
+                    type="button"
+                >
+                    INICIAR AGORA
+                </button>
+
+                <button
+                    id="add-to-routine-button"
+                    class="outline-button"
+                    type="button"
+                >
+                    + ADICIONAR À ROTINA
+                </button>
+
+            </section>
+
+        </main>
+
+
+        <!-- CONFIG EXERCÍCIO AVULSO -->
+
+        <main
+            id="screen-config"
+            class="screen"
+        >
+
+            <section class="page-heading">
+
+                <p class="eyebrow">
+                    CONFIGURAÇÃO
+                </p>
+
+                <h1 id="config-title">
+                    Exercício
+                </h1>
+
+                <p>
+                    Configure antes de iniciar.
+                </p>
+
+            </section>
+
+            <section class="form-card">
+
+                <h2>
+                    Meta
+                </h2>
+
+                <div class="segmented-control">
+
+                    <button
+                        id="mode-reps"
+                        class="segment active"
+                        type="button"
+                    >
+                        Repetições
+                    </button>
+
+                    <button
+                        id="mode-time"
+                        class="segment"
+                        type="button"
+                    >
+                        Tempo
+                    </button>
+
+                </div>
+
+                <div
+                    id="reps-setting"
+                    class="setting-row"
+                >
+
+                    <div>
+
+                        <strong>
+                            Repetições
+                        </strong>
+
+                    </div>
+
+                    <div class="mini-stepper">
+
+                        <button id="reps-minus">
+                            −
+                        </button>
+
+                        <span id="reps-value">
+                            5
+                        </span>
+
+                        <button id="reps-plus">
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div
+                    id="time-setting"
+                    class="setting-row hidden"
+                >
+
+                    <div>
+
+                        <strong>
+                            Tempo
+                        </strong>
+
+                    </div>
+
+                    <div class="mini-stepper">
+
+                        <button id="time-minus">
+                            −
+                        </button>
+
+                        <span id="time-value">
+                            30s
+                        </span>
+
+                        <button id="time-plus">
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="separator"></div>
+
+                <div class="setting-row">
+
+                    <div>
+
+                        <strong>
+                            Séries
+                        </strong>
+
+                    </div>
+
+                    <div class="mini-stepper">
+
+                        <button id="sets-minus">
+                            −
+                        </button>
+
+                        <span id="sets-value">
+                            3
+                        </span>
+
+                        <button id="sets-plus">
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="form-card">
+
+                <h2>
+                    Fiscalização
+                </h2>
+
+                <button
+                    id="supervision-on"
+                    class="supervision-option active"
+                    type="button"
+                >
+
+                    <span>
+                        ◎
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Com Body Engine
+                        </strong>
+
+                        <small>
+                            Câmera e referência ativas.
+                        </small>
+
+                    </div>
+
+                </button>
+
+                <button
+                    id="supervision-off"
+                    class="supervision-option"
+                    type="button"
+                >
+
+                    <span>
+                        ○
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Sem fiscalização
+                        </strong>
+
+                        <small>
+                            Exercício sem câmera.
+                        </small>
+
+                    </div>
+
+                </button>
+
+                <label
+                    id="first-guide-row"
+                    class="toggle-row first-guide-row"
+                >
+                    <div>
+                        <strong>Guia lento antes do treino</strong>
+                        <small>Mostra uma execução pausada antes da primeira série.</small>
+                    </div>
+                    <input
+                        id="first-guide-toggle"
+                        type="checkbox"
+                    >
+                </label>
+
+            </section>
+
+            <button
+                id="begin-workout"
+                class="yellow-button"
+                type="button"
+            >
+                INICIAR
+            </button>
+
+        </main>
+
+
+        <!-- RESULTADO -->
+
+        <main
+            id="screen-result"
+            class="screen"
+        >
+
+            <section class="result-page">
+
+                <div class="result-check">
+                    ✓
+                </div>
+
+                <p class="eyebrow">
+                    TREINO FINALIZADO
+                </p>
+
+                <h1>
+                    Concluído.
+                </h1>
+
+                <p>
+                    O exercício foi finalizado.
+                </p>
+
+                <button
+                    id="result-home"
+                    class="yellow-button"
+                    type="button"
+                >
+                    VOLTAR AO INÍCIO
+                </button>
+
+            </section>
+
+        </main>
+
+
+        <!-- WORKOUT -->
+
+        <section
+            id="screen-workout"
+            class="workout-screen hidden"
+        >
+
+            <video
+                id="camera"
+                autoplay
+                muted
+                playsinline
+            ></video>
+
+            <canvas id="target-overlay"></canvas>
+
+            <canvas id="overlay"></canvas>
+
+            <div
+                id="no-camera-mode"
+                class="no-camera-mode hidden"
+            >
+
+                <span>
+                    ◎
+                </span>
+
+                <strong>
+                    Sem fiscalização
+                </strong>
+
+                <small>
+                    Câmera desativada
+                </small>
+
+            </div>
+
+            <header class="workout-header">
+
+                <button
+                    id="close-workout"
+                    type="button"
+                >
+                    ←
+                </button>
+
+                <div>
+
+                    <small id="workout-title">
+                        EXERCÍCIO
+                    </small>
+
+                    <strong id="workout-series">
+                        SÉRIE 1 DE 3
+                    </strong>
+
+                </div>
+
+                <button
+                    id="switch-camera"
+                    type="button"
+                >
+                    ↻
+                </button>
+
+            </header>
+
+            <div
+                id="workout-counter-area"
+                class="workout-counter-area"
+            >
+
+                <strong id="workout-counter">
+                    0 / 5
+                </strong>
+
+                <small id="workout-counter-label">
+                    REPETIÇÕES
+                </small>
+
+            </div>
+
+            <div
+                id="movement-message"
+                class="movement-message"
+            >
+                Acompanhe a referência amarela
+            </div>
+
+            <footer class="workout-footer">
+
+                <button
+                    id="manual-rep"
+                    class="manual-button hidden"
+                    type="button"
+                >
+                    + REPETIÇÃO
+                </button>
+
+                <button
+                    id="skip-exercise"
+                    class="dark-button hidden"
+                    type="button"
+                >
+                    PULAR EXERCÍCIO
+                </button>
+
+                <button
+                    id="skip-series"
+                    class="dark-button"
+                    type="button"
+                >
+                    PULAR SÉRIE
+                </button>
+
+                <button
+                    id="complete-series"
+                    class="yellow-footer-button"
+                    type="button"
+                >
+                    CONCLUIR SÉRIE
+                </button>
+
+            </footer>
+
+        </section>
+
+
+        <!-- DESCANSO -->
+
+        <section
+            id="rest-screen"
+            class="rest-screen hidden"
+        >
+
+            <div class="rest-content">
+
+                <span class="rest-label">
+                    DESCANSO
+                </span>
+
+                <strong id="rest-timer">
+                    01:00
+                </strong>
+
+                <p id="rest-next-label">
+                    Próxima série
+                </p>
+
+                <button
+                    id="skip-rest"
+                    class="yellow-button"
+                    type="button"
+                >
+                    PULAR DESCANSO
+                </button>
+
+                <button
+                    id="exit-routine-workout"
+                    class="text-button"
+                    type="button"
+                >
+                    Encerrar treino
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONFIRMAÇÃO SAÍDA -->
+
+        <div
+            id="exit-workout-modal"
+            class="modal-backdrop hidden"
+        >
+
+            <div class="modal-card">
+
+                <span class="modal-icon">
+                    !
+                </span>
+
+                <h2>
+                    Encerrar treino?
+                </h2>
+
+                <p>
+                    O progresso desta sessão será interrompido.
+                </p>
+
+                <button
+                    id="continue-workout"
+                    class="yellow-button"
+                    type="button"
+                >
+                    CONTINUAR TREINO
+                </button>
+
+                <button
+                    id="confirm-exit-workout"
+                    class="danger-outline-button"
+                    type="button"
+                >
+                    ENCERRAR
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAV -->
+
+        <nav
+            id="bottom-nav"
+            class="bottom-nav"
+        >
+
+            <button
+                data-nav="home"
+                class="nav-item active"
+                type="button"
+            >
+                <span>
+                    ⌂
+                </span>
+
+                Início
+            </button>
+
+            <button
+                data-nav="library"
+                class="nav-item"
+                type="button"
+            >
+                <span>
+                    ◫
+                </span>
+
+                Explorar
+            </button>
+
+            <button
+                data-nav="train"
+                class="nav-item"
+                type="button"
+            >
+
+                <span class="nav-action-circle">
+                    ▶
+                </span>
+
+                Treinar
+            </button>
+
+            <button
+                data-nav="community"
+                class="nav-item"
+                type="button"
+            >
+                <span>
+                    ♧
+                </span>
+
+                Comunidade
+            </button>
+
+            <button
+                data-nav="profile"
+                class="nav-item"
+                type="button"
+            >
+                <span>
+                    ◉
+                </span>
+
+                Você
+            </button>
+
+        </nav>
+
+    </div>
+
+</div>
+
+<script
+    type="module"
+    src="app.js"
+></script>
 
 </body>
-
 </html>
