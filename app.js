@@ -4,6 +4,10 @@ import {
 }
 from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@latest/+esm";
 
+import {
+    fitaiMotionPlatform
+}
+from "./js/engine/fitai-motion-platform.js";
 
 import {
     STORAGE,
@@ -10128,6 +10132,11 @@ fitaiBody.update(
     timestamp
 );
 
+fitaiMotionPlatform.update(
+    landmarks,
+    worldLandmarks,
+    timestamp
+);
 
             updateRecorderDetection(
                 true
